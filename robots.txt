@@ -7,10 +7,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-User-agent: Yeti
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-Sitemap: https://t3b07-ds-night-rv-1.pages.dev/sitemap.xml
+Sitemap: https://dangsan-night-guide.hardcoreroom.com/sitemap.xml

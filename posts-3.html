@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (3/3) · t3b07-ds-night-rv-1</title>
+  <meta name="description" content="t3b07-ds-night-rv-1에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://dangsan-night-guide.hardcoreroom.com/posts-3.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent: #ff3b3b;
+            --border: #e0e0e0;
+            --shadow: 0 2px 16px rgba(0,0,0,0.06);
+            --radius: 8px;
+            --transition: 0.2s ease;
+            --max-width: 960px;
+            --font-mono: 'SF Mono', 'Consolas', monospace;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        .k-main-85t8 {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            height: 64px;
+        }
+        .k-main-85t8 .logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+        .k-main-85t8 ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .k-main-85t8 li {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        .k-main-85t8 a:hover {
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+        @media(max-width:768px) {
+            .k-main-85t8 ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: var(--surface);
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1.25rem;
+            }
+            .k-main-85t8 ul.show {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        .main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .section {
+            margin-bottom: 3.5rem;
+        }
+        .section h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .checklist {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .checklist li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .checklist li::before {
+            content: "▹";
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .faq {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .faq dt {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+        .faq dd {
+            margin-left: 0;
+            margin-top: 0.4rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+    </style>
+  <meta property="og:title" content="글 목록 (3/3) · t3b07-ds-night-rv-1">
+  <meta property="og:description" content="t3b07-ds-night-rv-1에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://dangsan-night-guide.hardcoreroom.com/posts-3.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+        <nav class="k-main-85t8">
+            <a href="/" class="logo">DANGSAN<span style="color:#1a1a1a;">/INFO</span></a>
+            <ul id="navList">
+                <li><a href="/">메인</a></li>
+                <li><a href="/guide">가이드</a></li>
+                <li><a href="/info" style="color:var(--accent);">정보</a></li>
+                <li><a href="/checklist">체크리스트</a></li>
+            </ul>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 47개 · 3/3 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002-1hz61qq.html">당산 유흥 후기</a>
+        <p class="post-item__summary">당산 지역에서 유흥 관련 정보를 찾는 분들이 늘어나면서 효율적이고 안전하게 유흥을 즐기려는 수요도 높아지고 있습니다. 당산은 교통이 편리하고 주변 편의 시설이 잘 갖춰져 있어 퇴근 후나 주말에 가볍</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002-28j84m.html">당산 유흥 후기 솔직 후기</a>
+        <p class="post-item__summary">당산 지역에서 유흥 업소에 대한 후기를 확인할 때는 작성자의 경험 기간과 방문 횟수를 먼저 살펴보아야 합니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002-4pvd7k.html">당산 유흥 후기 솔직 후기</a>
+        <p class="post-item__summary">당산 지역은 교통이 편리하고 상업 시설이 밀집해 있어 다양한 유흥 업소가 모여 있는 곳입니다. 저녁 시간대에는 많은 사람들이 모여 활기찬 분위기가 형성되며, 음식점과 카페도 함께 이용할 수 있습니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-001-19e6967.html">당산 유흥 후기 관련 추천 정보</a>
+        <p class="post-item__summary">당산 지역에서 유흥 업소를 이용하려는 경우 가장 먼저 신뢰할 수 있는 후기 출처를 구분하는 것이 중요합니다. 공식 커뮤니티나 검증된 리뷰 플랫폼을 활용하면 허위 정보에 속지 않을 수 있습니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-001-1hz61qq.html">당산 유흥 후기 관련 추천 정보</a>
+        <p class="post-item__summary">당산 지역에서 유흥 관련 정보를 검색할 때는 공식 커뮤니티나 검증된 리뷰 사이트를 우선적으로 참고하는 것이 안전합니다. 출처가 불분명한 개인 블로그나 익명의 게시글은 정보의 신뢰도가 낮을 수 있으므</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-001-1ov8yrl.html">당산 유흥 후기</a>
+        <p class="post-item__summary">당산역 주변은 지하철 2호선과 9호선이 교차하는 교통의 요충지로, 직장인들의 회식 장소나 모임 장소로 자주 이용되는 지역입니다. 한강공원과 가까워 산책이나 야경을 즐기기에도 좋지만, 저녁 시간이 되</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-002-1dk439v.html">당산 유흥 후기</a>
+        <p class="post-item__summary">서울 영등포구에 위치한 당산 지역은 교통의 요충지로서 다양한 상권과 함께 야간 유흥 문화가 잘 형성된 곳으로 알려져 있습니다. 지하철 2호선과 9호선이 교차하는 환승역 주변을 중심으로 다양한 형태의</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <a class="pager__link" href="posts-2.html">2</a>
+      <span class="pager__current">3</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
